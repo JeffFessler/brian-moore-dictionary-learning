@@ -1,0 +1,121 @@
+function RunOptShrinkAlgos4(idx)
+% Syntax:   RunOptShrinkAlgos4(idx);
+
+%--------------------------------------------------------------------------
+% Simulation setup
+%--------------------------------------------------------------------------
+% runpbs parameters
+MAX_IDX = 250; % Max # indices
+offset = 250; % data#.mat offset
+
+% Data parameters
+nc_list = [8]; % # coils
+nt_list = [2 4 6 8 10 12 16 20 24 30 32 40]; % # time points
+%SNR_list = linspace(10,60,10); % SNR values
+SNR_list = 40:5:60; % SNR values
+seed_list = 2; % rng seeds
+
+% Algo parameters
+%{
+% L + S
+algoStr = 'L+S PGM'; % {'L+S PGM','L&S ADMM'}
+proxS = 'mixed21'; % {'soft','mixed21'}
+T = 1; % {1,TempFFT(2)}
+r_list = 1:10;
+lambdaS_list = logspace(log10(0.001),log10(10),11);
+%}
+% L & S
+algoStr = 'L&S ADMM'; % {'L+S PGM','L&S ADMM'}
+proxS = 'mixed21'; % {'soft','mixed21'}
+T = 1; % {1,TempFFT(2)}
+r_list = 1:10;
+lambdaS_list = logspace(log10(0.001),log10(10),11);
+
+% Paths
+irtpath = '/home/brimoor/Research/irt/'; % IRT toolbox location
+proxpath = '/home/brimoor/Research/optshrink4mri/prox/'; % Proximal functions folder
+inpath = '/home/brimoor/Research/optshrink4mri/dynobj.mat'; % Ground truth data
+%outpath = '/home/brimoor/Research/optshrink4mri/opt_LpS_mixed21/data.mat'; % Output data path
+outpath = '/home/brimoor/Research/optshrink4mri/opt_LaS_mixed21/data.mat'; % Output data path
+%--------------------------------------------------------------------------
+
+% Get indices for this iteration
+Nc = length(nc_list);
+Nt = length(nt_list);
+NSNR = length(SNR_list);
+Nseed = length(seed_list);
+Nr = length(r_list);
+NlambdaS = length(lambdaS_list);
+N = Nc * Nt * NSNR * Nseed * Nr * NlambdaS;
+inds = getInds(idx,N,MAX_IDX);
+Ninds = length(inds);
+if (Ninds == 0)
+    fprintf('Nothing to do for index %i/%i\n',idx,MAX_IDX);
+    return;
+end
+[nc_inds nt_inds SNR_inds seed_inds r_inds lambdaS_inds] = ind2sub([Nc Nt NSNR Nseed Nr NlambdaS],inds);
+
+% Get parameters for this iteration
+nc = nc_list(nc_inds(:));
+nt = nt_list(nt_inds(:));
+SNR = SNR_list(SNR_inds(:));
+seed = seed_list(seed_inds(:));
+r = r_list(r_inds(:));
+lambdaS = lambdaS_list(lambdaS_inds(:));
+
+% Set paths
+irtsetup(irtpath); % Add irt toolbox to path
+addpath(regexprep(proxpath,'\','/')); % Add prox/ directory to path
+
+% Load ground truth data
+gtData = load(inpath);
+Xtrue480 = gtData.dyn_obj;
+dce = gtData.dce;
+clear gtData;
+
+% Perform reconstructions
+labels = {'nc','nt','SNR','seed','r','lambdaS', ...
+          'NRMSE','NRMSE_ROI1','NRMSE_ROI2','NRMSE_ROI3','NRMSE_ROI'}; %#ok
+data = [nc(:) nt(:) SNR(:) seed(:) r(:) lambdaS(:) nan(Ninds,5)];
+NRMSEfcn = @(Xhat,Xtrue) norm(Xhat(:) - Xtrue(:)) / norm(Xtrue(:));
+for i = 1:Ninds
+    % Start simulation timer
+    stimer = tic;
+    
+    % Perform reconstruction
+    [~,recon,~,~,mask,ROIs,nd,splineInterp] = run_optshrink_algo(nc(i),nt(i),SNR(i),seed(i),r(i),proxS,lambdaS(i),algoStr,T,Xtrue480,dce);
+    if (r(i) > min(nd,nt(i)))
+        % r was too large
+        continue;
+    end
+    
+    % Interpolate reconstruction
+    Xhat = splineInterp(abs(embed(recon.X,mask)));
+    
+    % Compute NRMSEs
+    data(i,end - 4) = NRMSEfcn(Xhat,Xtrue480);
+    M1 = repmat(ROIs{1},[1 1 480]); % Lesion #1
+    data(i,end - 3) = NRMSEfcn(Xhat(M1),Xtrue480(M1));
+    M2 = repmat(ROIs{2},[1 1 480]); % Lesion #2
+    data(i,end - 2) = NRMSEfcn(Xhat(M2),Xtrue480(M2));
+    M3 = repmat(ROIs{3},[1 1 480]); % Lesion #3
+    data(i,end - 1) = NRMSEfcn(Xhat(M3),Xtrue480(M3));
+    M = (M1 | M2 | M3); % All lesions
+    data(i,end) = NRMSEfcn(Xhat(M),Xtrue480(M));
+    
+    % Display progress
+    fprintf('*** Simulation %i/%i complete [Time = %.2fs]\n',i,Ninds,toc(stimer));
+end
+
+% Make output directory, if necessary
+[outdir outfile outext] = fileparts(outpath);
+if ~exist(outdir,'dir')
+    mkdir(outdir);
+end
+
+% Save data to file
+wtimer = tic;
+fileIdx = offset + idx;
+outpathn = sprintf('%s/%s%i%s',outdir,outfile,fileIdx,outext); % Append #
+save(outpathn,'labels','data');
+fprintf('*** File "%s" written [Time = %.2fs]\n',outpathn,toc(wtimer));
