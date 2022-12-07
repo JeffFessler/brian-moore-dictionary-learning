@@ -1,0 +1,122 @@
+###########################################################################
+# run queue
+###########################################################################
+
+# RUNNING
+
+###########################################################################
+# agg queue
+###########################################################################
+
+###########################################################################
+# history (noiseless)
+###########################################################################
+
+qsub -t 1-5 interp_par1a.txt
+qsub -t 1-5 interp_par1b.txt
+qsub -t 1-5 interp_par3a.txt
+qsub -t 1-5 interp_par3b.txt
+qsub -t 1-5 interp_par5a.txt
+qsub -t 1-5 interp_par5b.txt
+qsub -t 1-5 interp_par7a.txt
+qsub -t 1-5 interp_par7b.txt
+
+qsub -t 1-25 onlineDls_par1a.txt
+qsub -t 1-30 onlineDls_par1a2.txt
+qsub -t 1-7 onlineDls_par1a3.txt
+qsub -t 1-25 onlineDls_par1b.txt
+qsub -t 1-25 onlineDls_par1b2.txt
+qsub -t 1-15 onlineDls_par1c.txt
+
+qsub -t 1-5 onlineDls_par2a.txt
+qsub -t 1-5 onlineDls_par2b.txt
+qsub -t 1-5 onlineDls_par2c.txt
+qsub -t 1-5 onlineDls_par2d.txt
+qsub -t 1-5 onlineDls_par2e.txt
+qsub -t 1-5 onlineDls_par2f.txt
+
+qsub -t 1-15 onlineDls_par3a.txt
+qsub -t 1-7 onlineDls_par3a2.txt
+qsub -t 1-15 onlineDls_par3b.txt
+qsub -t 1-15 onlineDls_par3c.txt
+qsub -t 1-9 onlineDls_par3g.txt
+
+qsub -t 1-5 onlineDls_par4a.txt
+qsub -t 1-5 onlineDls_par4b.txt
+qsub -t 1-5 onlineDls_par4c.txt
+qsub -t 1-5 onlineDls_par4d.txt
+qsub -t 1-5 onlineDls_par4e.txt
+qsub -t 1-5 onlineDls_par4f.txt
+qsub -t 1-5 onlineDls_par4g.txt
+
+qsub -t 1-9 onlineDls_par5a.txt
+qsub -t 1-7 onlineDls_par5a2.txt
+qsub -t 1-9 onlineDls_par5b.txt
+qsub -t 1-9 onlineDls_par5g.txt
+
+qsub -t 1-5 onlineDls_par6a.txt
+qsub -t 1-5 onlineDls_par6b.txt
+qsub -t 1-5 onlineDls_par6c.txt
+qsub -t 1-5 onlineDls_par6d.txt
+qsub -t 1-5 onlineDls_par6e.txt
+qsub -t 1-5 onlineDls_par6f.txt
+qsub -t 1-5 onlineDls_par6g.txt
+
+qsub -t 1-9 onlineDls_par7a.txt
+qsub -t 1-7 onlineDls_par7a2.txt
+qsub -t 1-9 onlineDls_par7b.txt
+qsub -t 1-9 onlineDls_par7g.txt
+
+qsub -t 1-5 onlineDls_par8a.txt
+qsub -t 1-5 onlineDls_par8b.txt
+qsub -t 1-5 onlineDls_par8c.txt
+qsub -t 1-5 onlineDls_par8d.txt
+qsub -t 1-5 onlineDls_par8e.txt
+qsub -t 1-5 onlineDls_par8f.txt
+qsub -t 1-5 onlineDls_par8g.txt
+
+qsub -t 1-10 dls_par1b.txt
+qsub -t 1-5 dls_par2b.txt
+
+qsub -t 1-5 dls_par2a.txt
+
+qsub -t 1-15 dls_par3a.txt
+qsub -t 1-10 dls_par3b.txt
+
+qsub -t 1-5 dls_par4a.txt
+qsub -t 1-5 dls_par4b.txt
+
+qsub -t 1-10 dls_par5b.txt
+
+qsub -t 1-5 dls_par6a.txt
+qsub -t 1-5 dls_par6b.txt
+
+qsub -t 1-10 dls_par7b.txt
+
+qsub -t 1-5 dls_par8a.txt
+qsub -t 1-5 dls_par8b.txt
+
+###########################################################################
+# history (noisy)
+###########################################################################
+
+qsub -t 1-5 interp_npar3a.txt
+qsub -t 1-5 interp_npar3b.txt
+
+qsub -t 1-50 dls_npar3a.txt
+
+qsub -t 1-5 dls_npar4a.txt
+qsub -t 1-5 dls_npar4b.txt
+
+qsub -t 1-50 onlineDls_npar3a.txt
+qsub -t 1-50 onlineDls_npar3b.txt
+qsub -t 1-50 onlineDls_npar3c.txt
+qsub -t 1-9 onlineDls_npar3g.txt
+
+qsub -t 1-5 onlineDls_npar4a.txt
+qsub -t 1-5 onlineDls_npar4b.txt
+qsub -t 1-5 onlineDls_npar4b2.txt
+qsub -t 1-5 onlineDls_npar4b3.txt
+qsub -t 1-5 onlineDls_npar4c.txt
+qsub -t 1-5 onlineDls_npar4d.txt
+qsub -t 1-5 onlineDls_npar4g.txt

@@ -1,0 +1,217 @@
+###########################################################################
+# run queue
+###########################################################################
+
+###########################################################################
+# agg queue
+###########################################################################
+
+###########################################################################
+# history
+###########################################################################
+
+# SOUP
+2a: Xmode = 1, nIters0 = 0
+2b: Xmode = 1, nIters0 = 5
+2c: Xmode = 1, Dmode = 1, nIters0 = 5
+2d: Xmode = 1, nIters0 = 5, np = -80
+2e: Xmode = 1, nIters0 = 5, np = 80
+2f: Xmode = 1, fixed DCT
+2f2: Xmode = 1, fixed DCT, mu2 = 0
+2g: Xmode = 1, nIters0 = 5, nIters = 20
+2h: Xmode = 1, fixed oracle D
+2h2: Xmode = 1, fixed oracle D, mu2 = 0
+2i: Xmode = 1, nIters0 = 5 (fixed X, too), nIters = 20
+2j: Xmode = 1, nIters0 = 5 (fixed X, too), nIters = 20, nReps = 2
+2k: Xmode = 1 (first rep), nIters0 = 5 (fixed X, too), nIters = 20, nReps = 2, mu2 = 0
+2k2: Xmode = 1 (first rep), nIters0 = 5 (fixed X, too), nIters = 20, nReps = 2, mu2 = 0, Dmode = -1
+2k3: Xmode = 1 (first rep), nIters0 = 5 (fixed X, too), nIters = 20, nReps = 2, mu2 = 0, Dmode = -1, reset params
+2l: Xmode = 1 (first rep), nIters0 = 2 (fixed X, too), nIters = 10, nReps = 4, mu2 = 0
+2m: Xmode = 1 (first rep), nIters0 = 2 (fixed X, too), nIters = 10, nReps = 2, mu2 = 0, Dmode = -1
+2n: Xmode = 1, nIters0 = 5 (fixed X, too), nIters = 20, nReps = 1, mu2 = 0, Dmode = -1, batch init
+2o: fixed DCT, [1, 1, 1] stride
+
+3a: fixed DCT
+3a2: fixed DCT (exact same parameters as 2f2)
+3b: fixed oracle
+3c: learned, nReps = 2, resetParams = true
+3d: learned, nReps = 2, resetParams = false
+3e: learned, nReps = 1
+3f: learned, nReps = 1, batch init
+3f2: learned, nReps = 1, batch init (better params) *** otazo + PINCAT only ***
+3g: learned, nReps = 2, batch init
+
+# UNITARY
+2a: Xmode = 1, nIters0 = 5, nIters = 20
+2b: Xmode = 1, nIters0 = 5, nIters = 20, np = -40
+2c: Xmode = 1, nIters0 = 5, nIters = 20, np = -80
+3a: Xmode = 1 (first rep), nIters0 = 0, nIters = 20, nReps = 2, mu2 = 0, Dmode = -1
+3a2: Xmode = 1 (first rep), nIters0 = 0, nIters = 20, nReps = 2, mu2 = 0, Dmode = -1, reset params
+3b: Xmode = 1 (first rep), nIters0 = 0, nIters = 10, nReps = 2, mu2 = 0, Dmode = -1
+3c: Xmode = 1, nIters0 = 0, nIters = 20, nReps = 1, mu2 = 0, Dmode = -1, batch init
+
+4a: learned, nReps = 2, resetParams = true
+4b: learned, nReps = 2, resetParams = false
+4c: learned, nReps = 1
+4d: learned, nReps = 1, batch init
+4e: learned, nReps = 2, batch init *** invivo only ***
+
+5a/6a: 1st rep: fixed DCT, 2nd rep: unitary
+5b/6b: unitary w/ [1, 1, 1] stride
+5b2/6b2: unitary w/ [1, 1, 1] stride, 2 passes
+5c/6c: 1st rep: fixed DCT, 2nd rep: unitary w/ [1, 1, 1] stride
+6d: unitary w/ [1, 1, 1] stride, T = 10
+5e/6e: 1st rep: opt DCT, 2nd rep: unitary, both [1, 1 ,1] strides
+5f/6f: 1st rep: opt DCT [2, 2, 1], 2nd rep: unitary [1, 1 ,1]
+
+# Otazo
+qsub -t 1-25 otazo_onlineUnitaryDls_par1.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par2a.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par2b.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par2c.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par3a.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par3a2.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par3b.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par3c.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par4a.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par4b.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par4c.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par4d.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par5a.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par5b.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par5c.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par5e.txt
+qsub -t 1-25 otazo_onlineUnitaryDls_par5f.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6a.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6b.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6b2.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6c.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6d.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6e.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6f.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6f2.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6f3.txt
+qsub -t 1-18 otazo_onlineUnitaryDls_par6f4.txt
+qsub -t 1-50 otazo_onlineDls_par1.txt
+qsub -t 1-25 otazo_onlineDls_par1b.txt
+qsub -t 1-25 otazo_onlineDls_par2a.txt
+qsub -t 1-25 otazo_onlineDls_par2b.txt
+qsub -t 1-25 otazo_onlineDls_par2c.txt
+qsub -t 1-25 otazo_onlineDls_par2d.txt
+qsub -t 1-25 otazo_onlineDls_par2e.txt
+qsub -t 1-25 otazo_onlineDls_par2f.txt
+qsub -t 1-25 otazo_onlineDls_par2f2.txt
+qsub -t 1-25 otazo_onlineDls_par2g.txt
+qsub -t 1-25 otazo_onlineDls_par2h.txt
+qsub -t 1-25 otazo_onlineDls_par2h2.txt
+qsub -t 1-25 otazo_onlineDls_par2i.txt
+qsub -t 1-25 otazo_onlineDls_par2j.txt
+qsub -t 1-25 otazo_onlineDls_par2k.txt
+qsub -t 1-25 otazo_onlineDls_par2k2.txt
+qsub -t 1-25 otazo_onlineDls_par2k3.txt
+qsub -t 1-25 otazo_onlineDls_par2l.txt
+qsub -t 1-25 otazo_onlineDls_par2m.txt
+qsub -t 1-25 otazo_onlineDls_par2n.txt
+qsub -t 1-25 otazo_onlineDls_par2o.txt
+qsub -t 1-18 otazo_onlineDls_par3a.txt
+qsub -t 1-18 otazo_onlineDls_par3a2.txt
+qsub -t 1-18 otazo_onlineDls_par3b.txt
+qsub -t 1-18 otazo_onlineDls_par3c.txt
+qsub -t 1-18 otazo_onlineDls_par3d.txt
+qsub -t 1-18 otazo_onlineDls_par3e.txt
+qsub -t 1-18 otazo_onlineDls_par3f.txt
+qsub -t 1-18 otazo_onlineDls_par3f2.txt
+qsub -t 1-18 otazo_onlineDls_par3g.txt
+
+# Invivo
+qsub -t 1-25 invivo_onlineUnitaryDls_par1.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par2a.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par2b.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par2c.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par3a.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par3a2.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par3b.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par3c.txt
+qsub -t 1-25 invivo_onlineUnitaryDls_par4a.txt
+qsub -t 1-18 invivo_onlineUnitaryDls_par4b.txt
+qsub -t 1-18 invivo_onlineUnitaryDls_par4c.txt
+qsub -t 1-18 invivo_onlineUnitaryDls_par4d.txt
+qsub -t 1-18 invivo_onlineUnitaryDls_par4e.txt
+qsub -t 1-50 invivo_onlineDls_par1.txt
+qsub -t 1-25 invivo_onlineDls_par1b.txt
+qsub -t 1-25 invivo_onlineDls_par2a.txt
+qsub -t 1-25 invivo_onlineDls_par2b.txt
+qsub -t 1-25 invivo_onlineDls_par2c.txt
+qsub -t 1-25 invivo_onlineDls_par2d.txt
+qsub -t 1-25 invivo_onlineDls_par2e.txt
+qsub -t 1-25 invivo_onlineDls_par2f.txt
+qsub -t 1-25 invivo_onlineDls_par2f2.txt
+qsub -t 1-25 invivo_onlineDls_par2g.txt
+qsub -t 1-25 invivo_onlineDls_par2h.txt
+qsub -t 1-25 invivo_onlineDls_par2h2.txt
+qsub -t 1-25 invivo_onlineDls_par2i.txt
+qsub -t 1-25 invivo_onlineDls_par2j.txt
+qsub -t 1-25 invivo_onlineDls_par2k.txt
+qsub -t 1-25 invivo_onlineDls_par2k2.txt
+qsub -t 1-25 invivo_onlineDls_par2k3.txt
+qsub -t 1-25 invivo_onlineDls_par2l.txt
+qsub -t 1-25 invivo_onlineDls_par2m.txt
+qsub -t 1-25 invivo_onlineDls_par2n.txt
+qsub -t 1-18 invivo_onlineDls_par3a.txt
+qsub -t 1-18 invivo_onlineDls_par3b.txt
+qsub -t 1-18 invivo_onlineDls_par3c.txt
+qsub -t 1-18 invivo_onlineDls_par3d.txt
+qsub -t 1-18 invivo_onlineDls_par3e.txt
+qsub -t 1-18 invivo_onlineDls_par3f.txt
+qsub -t 1-18 invivo_onlineDls_par3g.txt
+
+# PINCAT
+qsub -t 1-25 pincat_onlineUnitaryDls_par1.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par2a.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par2b.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par2c.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par3a.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par3a2.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par3b.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par3c.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par4a.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par4b.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par4c.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par4d.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par5a.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par5b.txt
+qsub -t 1-25 pincat_onlineUnitaryDls_par5c.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6a.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6b.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6b2.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6c.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6d.txt
+qsub -t 1-18 pincat_onlineUnitaryDls_par6f.txt
+qsub -t 1-50 pincat_onlineDls_par1.txt
+qsub -t 1-25 pincat_onlineDls_par1b.txt
+qsub -t 1-25 pincat_onlineDls_par2a.txt
+qsub -t 1-25 pincat_onlineDls_par2b.txt
+qsub -t 1-25 pincat_onlineDls_par2c.txt
+qsub -t 1-25 pincat_onlineDls_par2d.txt
+qsub -t 1-25 pincat_onlineDls_par2e.txt
+qsub -t 1-25 pincat_onlineDls_par2f.txt
+qsub -t 1-25 pincat_onlineDls_par2f2.txt
+qsub -t 1-25 pincat_onlineDls_par2g.txt
+qsub -t 1-25 pincat_onlineDls_par2h.txt
+qsub -t 1-25 pincat_onlineDls_par2h2.txt
+qsub -t 1-25 pincat_onlineDls_par2i.txt
+qsub -t 1-25 pincat_onlineDls_par2j.txt
+qsub -t 1-25 pincat_onlineDls_par2k.txt
+qsub -t 1-25 pincat_onlineDls_par2k2.txt
+qsub -t 1-25 pincat_onlineDls_par2k3.txt
+qsub -t 1-25 pincat_onlineDls_par2l.txt
+qsub -t 1-25 pincat_onlineDls_par2m.txt
+qsub -t 1-25 pincat_onlineDls_par2n.txt
+qsub -t 1-18 pincat_onlineDls_par3a.txt
+qsub -t 1-18 pincat_onlineDls_par3b.txt
+qsub -t 1-18 pincat_onlineDls_par3c.txt
+qsub -t 1-18 pincat_onlineDls_par3d.txt
+qsub -t 1-18 pincat_onlineDls_par3e.txt
+qsub -t 1-18 pincat_onlineDls_par3f.txt
+qsub -t 1-18 pincat_onlineDls_par3f2.txt
+qsub -t 1-18 pincat_onlineDls_par3g.txt

@@ -1,0 +1,10 @@
+#PBS -A rajnrao_fluxod
+#PBS -N onlineDls_par5b
+#PBS -q fluxod
+#PBS -l procs=1,mem=16gb,walltime=24:00:00,qos=flux
+#PBS -M sims.brimoor@gmail.com
+#PBS -m abe
+#PBS -V
+
+cd $PBS_O_WORKDIR
+matlab -nodisplay -r "onlineDls_run(@onlineDls_par5b,$PBS_ARRAYID);exit"

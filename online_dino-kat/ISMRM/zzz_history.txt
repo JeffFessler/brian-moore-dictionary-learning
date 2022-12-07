@@ -1,0 +1,55 @@
+###########################################################################
+# run queue
+###########################################################################
+
+### RUNNING ###
+
+
+### READY TO RUN ###
+
+# [1, 1, 1] strides
+qsub -t 1-6 invivo_onlineDls_par3b.txt
+qsub -t 1-25 invivo_onlineDls_par1b.txt
+
+###########################################################################
+# agg queue
+###########################################################################
+
+###########################################################################
+# history
+###########################################################################
+
+# Otazo
+qsub -t 1-70 otazo_onlineDls_par1.txt
+qsub -t 1-7 otazo_onlineDls_par2.txt
+qsub -t 1-6 otazo_onlineDls_par3.txt
+qsub -t 1-6 otazo_onlineDls_par3a.txt
+qsub -t 1-6 otazo_onlineDls_par3b.txt
+qsub -t 1-6 otazo_onlineDls_par3c.txt
+qsub -t 1-6 otazo_onlineDls_par3d.txt
+qsub -t 1-6 otazo_onlineDls_par3e.txt
+qsub -t 1-6 otazo_onlineDls_par3f.txt
+qsub -t 1-6 otazo_onlineDls_par3g.txt
+qsub -t 1-15 otazo_onlineDls_par4.txt
+qsub -t 1-25 otazo_onlineDls_par5.txt
+qsub -t 1-6 otazo_onlineDls_par6.txt
+qsub -t 1-6 otazo_onlineDls_par6a.txt
+qsub -t 1-6 otazo_onlineDls_par6b.txt
+
+# Invivo
+qsub -t 1-100 invivo_onlineDls_par1.txt
+
+qsub -t 1-5 invivo_onlineDls_par1c.txt
+qsub -t 1-5 invivo_onlineDls_par1d.txt
+qsub -t 1-7 invivo_onlineDls_par2.txt
+qsub -t 1-6 invivo_onlineDls_par3.txt
+
+qsub -t 1-25 invivo_onlineDls_par4.txt
+qsub -t 1-6 invivo_onlineDls_par5.txt
+qsub -t 1-6 invivo_onlineDls_par5b.txt
+
+# PINCAT
+qsub -t 1-100 pincat_onlineDls_par1.txt
+qsub -t 1-6 pincat_onlineDls_par3.txt
+qsub -t 1-6 pincat_onlineDls_par3b.txt
+qsub -t 1-6 pincat_onlineDls_par3c.txt

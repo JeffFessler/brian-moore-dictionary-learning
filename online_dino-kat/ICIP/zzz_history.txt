@@ -1,0 +1,122 @@
+###########################################################################
+# run queue
+###########################################################################
+
+# robustPCA
+qsub -t 1-35 road_rpca_par1b.txt
+qsub -t 1-35 road_rpca_par3b.txt
+
+# dls
+
+# onlineDls
+
+# interp
+
+###########################################################################
+# agg queue
+###########################################################################
+
+# dls
+
+# onlineDls
+
+# interp
+
+# robustPCA
+road_rpca_agg(@road_rpca_par1b)
+road_rpca_agg(@road_rpca_par3b)
+
+###########################################################################
+# history
+###########################################################################
+
+# robustPCA
+qsub -t 1-121 road_rpca_par1.txt
+qsub -t 1-5 road_rpca_par2.txt
+qsub -t 1-5 road_rpca_par2b.txt
+qsub -t 1-121 road_rpca_par3.txt
+qsub -t 1-5 road_rpca_par4.txt
+qsub -t 1-5 road_rpca_par4b.txt
+
+# dls
+qsub -t 1-5 road_dls_par1a.txt
+qsub -t 1-5 road_dls_par1a2.txt
+qsub -t 1-5 road_dls_par2a.txt
+qsub -t 1-5 road_dls_par2b.txt
+qsub -t 1-5 road_dls_par2c.txt
+qsub -t 1-5 road_dls_par2d.txt
+qsub -t 1-5 road_dls_par3a.txt
+qsub -t 1-5 road_dls_par3b.txt
+qsub -t 1-5 road_dls_par3c.txt
+qsub -t 1-5 road_dls_par3d.txt
+
+# onlineDls
+qsub -t 1-10 road_onlineDls_atoms_par1.txt
+qsub -t 1-5 road_onlineDls_atoms_par2.txt
+qsub -t 1-50 road_onlineDls_par1.txt
+qsub -t 1-27 road_onlineDls_par1b.txt
+qsub -t 1-8 road_onlineDls_par2.txt
+qsub -t 1-6 road_onlineDls_par2b.txt
+qsub -t 1-18 road_onlineDls_par2c.txt
+qsub -t 1-3 road_onlineDls_par3.txt
+qsub -t 1-12 road_onlineDls_par4.txt
+qsub -t 1-15 road_onlineDls_par5a.txt
+qsub -t 1-15 road_onlineDls_par5a2.txt
+qsub -t 1-5 road_onlineDls_par5b.txt
+qsub -t 1-5 road_onlineDls_par5b2.txt
+qsub -t 1-9 road_onlineDls_par6.txt
+qsub -t 1-15 road_onlineDls_par7a.txt
+qsub -t 1-15 road_onlineDls_par7a2.txt
+qsub -t 1-5 road_onlineDls_par7b.txt
+qsub -t 1-5 road_onlineDls_par7b2.txt
+qsub -t 1-15 road_onlineDls_par7c.txt
+qsub -t 1-12 road_onlineDls_par8.txt
+qsub -t 1-49 road_onlineDls_par9.txt
+qsub -t 1-12 road_onlineDls_par9b.txt
+qsub -t 1-27 road_onlineDls_par9c.txt
+qsub -t 1-25 road_onlineDls_par9d.txt
+qsub -t 1-105 road_onlineDls_par10.txt
+qsub -t 1-14 road_onlineDls_par10b.txt
+qsub -t 1-24 road_onlineDls_par11.txt
+qsub -t 1-15 road_onlineDls_par12a.txt
+qsub -t 1-5 road_onlineDls_par12b.txt
+qsub -t 1-15 road_onlineDls_par12c.txt
+qsub -t 1-15 road_onlineDls_par12c2.txt
+qsub -t 1-5 road_onlineDls_par12d.txt
+qsub -t 1-5 road_onlineDls_par12d2.txt
+qsub -t 1-15 road_onlineDls_par13a.txt
+qsub -t 1-5 road_onlineDls_par13b.txt
+qsub -t 1-15 road_onlineDls_par13c.txt
+qsub -t 1-15 road_onlineDls_par13c2.txt
+qsub -t 1-5 road_onlineDls_par13d.txt
+qsub -t 1-5 road_onlineDls_par13d2.txt
+
+# interp
+qsub -t 1-5 road_interp_par1.txt
+qsub -t 1-5 road_interp_par2.txt
+qsub -t 1-5 road_interp_par3.txt
+qsub -t 1-5 road_interp_par4.txt
+qsub -t 1-5 road_interp_par1b.txt
+qsub -t 1-5 road_interp_par2b.txt
+qsub -t 1-5 road_interp_par3b.txt
+qsub -t 1-5 road_interp_par4b.txt
+qsub -t 1-5 road_interp_par1c.txt
+qsub -t 1-5 road_interp_par2c.txt
+qsub -t 1-5 road_interp_par3c.txt
+qsub -t 1-5 road_interp_par4c.txt
+qsub -t 1-5 road_interp_par1c2.txt
+qsub -t 1-5 road_interp_par2c2.txt
+qsub -t 1-5 road_interp_par3c2.txt
+qsub -t 1-5 road_interp_par4c2.txt
+qsub -t 1-5 road_interp_par1d.txt
+qsub -t 1-5 road_interp_par2d.txt
+qsub -t 1-5 road_interp_par3d.txt
+qsub -t 1-5 road_interp_par4d.txt
+qsub -t 1-5 road_interp_par1e.txt
+qsub -t 1-5 road_interp_par2e.txt
+qsub -t 1-5 road_interp_par3e.txt
+qsub -t 1-5 road_interp_par4e.txt
+qsub -t 1-5 road_interp_par1e2.txt
+qsub -t 1-5 road_interp_par2e2.txt
+qsub -t 1-5 road_interp_par3e2.txt
+qsub -t 1-5 road_interp_par4e2.txt

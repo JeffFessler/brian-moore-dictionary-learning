@@ -1,0 +1,78 @@
+###########################################################################
+Otazo [128, 128, 40]
+###########################################################################
+Parameters
+Online DINO-KAT: lambda = X.XX, mu = X.XX, mu2 = -XX, dr = X, gamma = X.X
+
+NRMSEs w/ ps = 1 / 8 and seed = 1
+Baseline: 16.00%
+
+*** Times ***
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [2, 2, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 2.7s / iter @ 7% sparsity
+TOTAL = (50 + 10 * 40) * 2.7 / 60 = 20.3 minutes per pass
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [1, 1, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 7.9s / iter @ 7% sparsity
+TOTAL = (50 + 10 * 40) * 7.9 / 60 = 59.3 minutes per pass
+
+###########################################################################
+Invivo [190, 90, 70]
+###########################################################################
+Parameters
+Online DINO-KAT: lambda = 0.01, mu = 0.04, mu2 = -10, dr = 1, gamma = 0.9
+
+NRMSEs w/ nLines = 15 and seed = 1
+Baseline: 24.38%
+
+*** Times ***
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [2, 2, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 1.4s / iter @ 3% sparsity
+TOTAL = (50 + 10 * 70) * 1.4 / 60 = 17.5 minutes per pass
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [1, 1, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 4.9s / iter @ 3% sparsity
+TOTAL = (50 + 10 * 70) * 4.9 / 60 = 61.3 minutes per pass
+
+###########################################################################
+PINCAT [128, 128, 50], SNR = 45
+###########################################################################
+Parameters
+Online DINO-KAT: lambda = X.XX, mu = X.XX, mu2 = -XX, dr = X, gamma = X.X
+
+NRMSEs w/ nLines = 18 and seed = 1
+Baseline: 29.29%
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [2, 2, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 1.4s / iter @ 3% sparsity
+TOTAL = (50 + 10 * 70) * 1.6 / 60 = 20.0 minutes per pass
+
+T = 5
+pdim = [8, 8, 5]
+pgap = [1, 1, 1]
+nItersDB = 1
+nItersX = 10
+TIME = 5.3s / iter @ 3% sparsity
+TOTAL = (50 + 10 * 70) * 5.3 / 60 = 66.3 minutes per pass

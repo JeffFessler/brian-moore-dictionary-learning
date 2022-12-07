@@ -1,0 +1,73 @@
+###########################################################################
+Otazo (baseline init)
+###########################################################################
+
+'otazo_onlineDls_par3a2.mat', 'Online DINO-KAT [DCT]';
+'otazo_onlineDls_par3b.mat', 'Online DINO-KAT [oracle]';
+'otazo_onlineDls_par3c.mat', 'Online DINO-KAT [2 passes]';
+'otazo_onlineDls_par3e.mat', 'Online DINO-KAT [1 pass]';
+'otazo_onlineUnitaryDls_par6f4.mat', 'Online DINO-KAT [unitary]';
+'../ISMRM/batch/batch_otazo_dinokat2.mat', 'Batch DINO-KAT';
+'../ISMRM/batch/batch_otazo_fft.mat', 'Baseline';
+'../ISMRM/batch/batch_otazo_ktslr.mat', 'k-t SLR';
+'../ISMRM/batch/batch_otazo_rpca.mat', 'RPCA';
+
+
+                   Acceleration                    |   4x   |   8x   |  12x   |  16x   |  20x   |  24x   
+---------------------------------------------------+--------+--------+--------+--------+--------+--------
+                          Online DINO-KAT [oracle] | 10.19% | 12.45% | 14.42% | 16.38% | 17.83% | 17.89% 
+                *** Online DINO-KAT [2 passes] *** | 10.09% | 12.85% | 14.76% | 16.71% | 18.06% | 18.05% 
+                          Online DINO-KAT [1 pass] | 10.22% | 12.89% | 14.81% | 16.61% | 18.29% | 18.09% 
+                         Online DINO-KAT [unitary] | 10.53% | 13.61% | 15.71% | 17.83% | 20.38% | 20.12% 
+                             Online DINO-KAT [DCT] | 10.82% | 13.66% | 15.83% | 18.25% | 20.66% | 20.78% 
+                                    Batch DINO-KAT | 10.72% | 13.71% | 15.93% | 18.24% | 22.01% | 23.88% 
+                                              RPCA | 10.97% | 13.85% | 16.07% | 18.45% | 21.47% | 22.50% 
+                                           k-t SLR | 11.25% | 15.66% | 18.38% | 21.27% | 24.28% | 26.51% 
+                                          Baseline | 12.81% | 15.95% | 18.90% | 21.13% | 24.46% | 28.08% 
+---------------------------------------------------+--------+--------+--------+--------+--------+--------
+  Improvement over "Online DINO-KAT [oracle]" (dB) |   0.08 |  -0.27 |  -0.20 |  -0.17 |  -0.11 |  -0.08 
+  Improvement over "Online DINO-KAT [1 pass]" (dB) |   0.10 |   0.03 |   0.03 |  -0.05 |   0.11 |   0.02 
+ Improvement over "Online DINO-KAT [unitary]" (dB) |   0.36 |   0.50 |   0.54 |   0.56 |   1.05 |   0.94 
+     Improvement over "Online DINO-KAT [DCT]" (dB) |   0.60 |   0.54 |   0.61 |   0.77 |   1.17 |   1.22 
+            Improvement over "Batch DINO-KAT" (dB) |   0.52 |   0.57 |   0.66 |   0.76 |   1.72 |   2.43 
+                      Improvement over "RPCA" (dB) |   0.72 |   0.66 |   0.73 |   0.86 |   1.51 |   1.91 
+                   Improvement over "k-t SLR" (dB) |   0.94 |   1.72 |   1.90 |   2.10 |   2.57 |   3.34 
+                  Improvement over "Baseline" (dB) |   2.07 |   1.88 |   2.15 |   2.04 |   2.64 |   3.84 
+
+
+###########################################################################
+PINCAT (baseline init)
+###########################################################################
+
+'pincat_onlineDls_par3a.mat', 'Online DINO-KAT [DCT]';
+'pincat_onlineDls_par3b.mat', 'Online DINO-KAT [oracle]';
+'pincat_onlineDls_par3d.mat', 'Online DINO-KAT [2 passes]';
+'pincat_onlineDls_par3e.mat', 'Online DINO-KAT [1 pass]';
+'pincat_onlineUnitaryDls_par6b.mat', 'Online DINO-KAT [unitary]';
+'../ISMRM/batch/batch_pincat_dinokat3.mat', 'Batch DINO-KAT';
+'../ISMRM/batch/batch_pincat_fft.mat' , 'Baseline';
+'../ISMRM/batch/batch_pincat_ktslr.mat', 'k-t SLR';
+'../ISMRM/batch/batch_pincat_rpca.mat', 'RPCA';
+
+
+                   Acceleration                    |   5x   |   6x   |   7x   |   9x   |  14x   |  27x   
+---------------------------------------------------+--------+--------+--------+--------+--------+--------
+                          Online DINO-KAT [oracle] |  8.05% |  8.81% |  9.70% | 11.17% | 13.47% | 18.11% 
+                *** Online DINO-KAT [2 passes] *** |  8.92% |  9.66% | 11.05% | 12.38% | 15.53% | 21.83% 
+                          Online DINO-KAT [1 pass] |  9.01% |  9.72% | 11.01% | 12.39% | 15.36% | 20.90% 
+                         Online DINO-KAT [unitary] |  9.05% |  9.82% | 10.87% | 12.62% | 15.66% | 25.61% 
+                             Online DINO-KAT [DCT] |  9.50% | 10.24% | 11.48% | 13.21% | 16.38% | 22.46% 
+                                    Batch DINO-KAT |  9.97% | 10.70% | 11.80% | 13.20% | 15.93% | 20.94% 
+                                           k-t SLR |  9.84% | 10.93% | 12.41% | 14.67% | 18.21% | 24.23% 
+                                              RPCA | 11.85% | 12.95% | 14.41% | 16.64% | 19.98% | 25.88% 
+                                          Baseline | 22.33% | 24.67% | 27.48% | 31.35% | 36.62% | 44.48% 
+---------------------------------------------------+--------+--------+--------+--------+--------+--------
+  Improvement over "Online DINO-KAT [oracle]" (dB) |  -0.90 |  -0.80 |  -1.14 |  -0.89 |  -1.24 |  -1.63 
+  Improvement over "Online DINO-KAT [1 pass]" (dB) |   0.08 |   0.06 |  -0.03 |   0.01 |  -0.10 |  -0.38 
+ Improvement over "Online DINO-KAT [unitary]" (dB) |   0.12 |   0.15 |  -0.14 |   0.17 |   0.07 |   1.39 
+     Improvement over "Online DINO-KAT [DCT]" (dB) |   0.54 |   0.51 |   0.33 |   0.57 |   0.46 |   0.25 
+            Improvement over "Batch DINO-KAT" (dB) |   0.97 |   0.89 |   0.57 |   0.56 |   0.22 |  -0.36 
+                   Improvement over "k-t SLR" (dB) |   0.85 |   1.07 |   1.00 |   1.48 |   1.38 |   0.91 
+                      Improvement over "RPCA" (dB) |   2.47 |   2.55 |   2.30 |   2.57 |   2.19 |   1.48 
+                  Improvement over "Baseline" (dB) |   7.97 |   8.15 |   7.91 |   8.07 |   7.45 |   6.18 
+

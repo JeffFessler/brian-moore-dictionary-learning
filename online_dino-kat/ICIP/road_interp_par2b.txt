@@ -1,0 +1,10 @@
+#PBS -A rajnrao_fluxod
+#PBS -N road_interp_par2b
+#PBS -q fluxod
+#PBS -l procs=1,mem=8gb,walltime=24:00:00,qos=flux
+#PBS -M sims.brimoor@gmail.com
+#PBS -m abe
+#PBS -V
+
+cd $PBS_O_WORKDIR
+matlab -nodisplay -r "road_interp_run(@road_interp_par2b,$PBS_ARRAYID);exit"
